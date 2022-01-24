@@ -17,6 +17,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// if we don't mention a method, it takes 'index' by default
+Route::resource('articulos', 'App\Http\Controllers\ArticuloController');
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
