@@ -23,15 +23,22 @@
     <tbody>
         @foreach ($articulos as $articulo)
             <tr>
-                <td>{{$articulo->$id}}</td>
-                <td>{{$articulo->$codigo}}</td>
-                <td>{{$articulo->$descripcion}}</td>
-                <td>{{$articulo->$cantidad}}</td>
-                <td>{{$articulo->$precio}}</td>
-                <!--Here we put our Edit buttons-->
+                <td>{{$articulo->id}}</td>
+                <td>{{$articulo->codigo}}</td>
+                <td>{{$articulo->descripcion}}</td>
+                <td>{{$articulo->cantidad}}</td>
+                <td>{{$articulo->precio}}</td>
+                <!--Here we put our Edit & Delete buttons-->
                 <td>
-                    <a class="btn btn-info">Editar</a>
-                    <button class="btn btn-danger">Borrar</button>
+                    <!--This form is to Delete-->
+                    <!--We have to use 'Destroy' method to delete-->
+                    <form action="{{route('articulos.destroy', $articulo->id)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+
+                        <a href="/articulos/{{$articulo->id}}/edit" class="btn btn-info">Editar</a>
+                        <button type="submit" class="btn btn-danger">Borrar</button>
+                    </form>
                 </td>
             </tr>
         @endforeach
