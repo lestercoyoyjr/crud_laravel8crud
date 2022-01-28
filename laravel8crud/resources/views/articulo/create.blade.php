@@ -1,4 +1,4 @@
-<!--This is our edit page-->
+<!--This is our create page-->
 @extends('layouts.plantillabase')
 
 @section('contenido')

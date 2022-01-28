@@ -48,7 +48,19 @@ class ArticuloController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $articulos = new Articulo();
+        // This 'codigo' comes from view "Create.blade.php" as a class
+        // so the rest of the articles come with this too
+        $articulos->codigo = $request->get('codigo');
+        $articulos->descripcion = $request->get('descripcion');
+        $articulos->cantidad = $request->get('cantidad');
+        $articulos->precio = $request->get('precio');
+
+        // with this we save the info to store it in our DB
+        $articulos->save();
+
+        // redirect to the main View
+        return redirect('/articulos');
     }
 
     /**
@@ -70,7 +82,10 @@ class ArticuloController extends Controller
      */
     public function edit($id)
     {
-        //
+        // Here will brind what we made with Views in edi.blade.php
+        // we only need to brind one, so we use 'find()'
+        $articulo = Articulo::find($id);
+        return view('articulo.edit')->with('articulo', $articulo);
     }
 
     /**
@@ -82,7 +97,19 @@ class ArticuloController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Here we save the changes we want to make on our $articulo
+        // it has the same function than 'public function store()'
+        // we only need to brind one, so we use 'find()'
+        $articulo = Articulo::find($id);
+
+        $articulo->codigo = $request->get('codigo');
+        $articulo->descripcion = $request->get('descripcion');
+        $articulo->cantidad = $request->get('cantidad');
+        $articulo->precio = $request->get('precio');
+
+        $articulo->save();
+
+        return redirect('/articulos');
     }
 
     /**
@@ -93,6 +120,12 @@ class ArticuloController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // Here we delete our $articulo
+        // we only need to brind one, so we use 'find()'
+        $articulo = Articulo::find($id);
+
+        $articulo->delete();
+
+        return redirect('/articulos');
     }
 }
