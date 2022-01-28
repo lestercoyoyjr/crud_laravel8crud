@@ -12,7 +12,7 @@
 {{--Here we say that when we press Crear button, it will
     go to create.blade.php where we have all views to show for 
     create--}}
-<a href="articulos/create" class="btn btn-primary">Crear</a>  
+<a href="articulos/create" class="btn btn-primary mb-3">Crear</a>  
 
 <!--We're gonna create our table-->
 <!--'id' in table is for datatables-->
