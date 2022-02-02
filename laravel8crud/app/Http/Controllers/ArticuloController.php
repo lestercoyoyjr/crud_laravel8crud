@@ -12,6 +12,11 @@ use App\Models\Articulo;
 
 class ArticuloController extends Controller
 {
+    // this is to protect all our classes and methods
+    public function __construct(){
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
