@@ -14,7 +14,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    // Here we're referrencing to Jetstream default login
+    return view('auth.login');
 });
 
 // if we don't mention a method, it takes 'index' by default

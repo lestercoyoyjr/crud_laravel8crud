@@ -1,13 +1,12 @@
-<!--This is our edit page-->
-@extends('layouts.plantillabase')
+@extends('adminlte::page')
 
-@section('contenido')
-<h2>EDITAR REGISTROS</h2>
+@section('title', 'Laravel 8 CRUD')
 
-{{--
-    Actually we should use the method 'PUT' but because laravel
-    doesn't allow us to use it. we must mention it below 'POST'
-    --}}
+@section('content_header')
+    <h1>Editar</h1>
+@stop
+
+@section('content')
 <form action="/articulos/{{$articulo->id}}" method="POST">
     <!--This is to evite a CSRF-->
     @csrf
@@ -36,6 +35,13 @@
     </div>
     <!--Cancel button-->
     <a href="/articulos" class="btn btn-secondary" tabindex="5">Cancelar</a>
-    <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
+    <button type="submit" class="btn btn-dark" tabindex="4">Guardar</button>
 </form>
-@endsection
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+@stop
